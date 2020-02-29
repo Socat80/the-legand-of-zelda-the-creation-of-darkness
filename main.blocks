@@ -1,0 +1,436 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="denlAHqte;w[08}i6P1@">currentLevel</variable><variable id="bA49SV#o_tN:)+FR?ubZ">list</variable><variable id="qt6!SNU,bWDtOcUNBq+=">value</variable><variable id="Z,SEOe8Wz!TV^YT0Pwtg">coin</variable><variable id="}U)j7:7x/g!a/pN=qOCF">mySprite</variable><variable id="}1!rYh5~Lj}@@-6*/{+f">ghost</variable><variable id="UPL9BO|U.W!pWb!cTgn]">isGameRunning</variable><variable id="#)D.f0.y_9:kREg)+]rE">coins</variable><variable id="Bodf,hC;%TCc:`s!3~+u">ghosts</variable><variable id="2-.uU8SHLNKed8tl)5TU">item</variable><variable id="lPpi4Y($K0zK~LU]:z.$">mySprite2</variable><variable id="_nC*M_[^_vLTk4~%Z;)-">foodCount</variable><variable id="P*,Kq*]$Ej@X[F+j3u+Z">isDying</variable><variable type="KIND_SpriteKind" id="OfqzzE!,i~=_DuAKisrD">Player</variable><variable type="KIND_SpriteKind" id="wR$kPXPbBptIszWRI:9U">Projectile</variable><variable type="KIND_SpriteKind" id="njLibZ):PY4}m?onD{A(">Food</variable><variable type="KIND_SpriteKind" id="_U[CsL`REmqHC*#^SSpC">Enemy</variable></variables><block type="forever" x="830" y="-410"><statement name="HANDLER"><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">466</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Half</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">440</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Half</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">554</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Half</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">466</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Half</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">523</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Half</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">392</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Half</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">196</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Half</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="pxt-on-start" x="0" y="36"><comment id="undefined" pinned="false" h="1174" w="252">Copyright (c) 2019 Miles T. Watson, Kevin J. Walters
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</comment><statement name="HANDLER"><block type="variables_set"><field name="VAR" id="UPL9BO|U.W!pWb!cTgn]">isGameRunning</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="logic_boolean"><field name="BOOL">FALSE</field></block></value><next><block type="variables_set"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow></value><next><block type="function_call"><mutation name="setupGame" functionid="q.]cP{R:jCT,~~w@}?k$"/><next><block type="function_call"><mutation name="startGame" functionid="EpLUf4bCZ]BhZ2+K7?)6"/></block></next></block></next></block></next></block></statement></block><block type="function_definition" x="460" y="36"><mutation name="startGame" functionid="EpLUf4bCZ]BhZ2+K7?)6"/><field name="function_name">startGame</field><statement name="STACK"><block type="function_call"><mutation name="switchToLevel" functionid="@9D=y:*cAld.?z|,5Be7"><arg name="levelNum" id="7t777zstkde1vlic0m3mc" type="number"/></mutation><value name="7t777zstkde1vlic0m3mc"><shadow type="math_number"><field name="NUM">1</field></shadow></value><next><block type="function_call"><mutation name="initialiseLevel" functionid="z#|/uhOSrlC7E}W.nx)N"/></block></next></block></statement></block><block type="function_definition" x="1080" y="16"><mutation name="levelComplete" functionid="Nxj?^wc(Jv*:-I=Gz3@4"/><field name="function_name">levelComplete</field><statement name="STACK"><block type="function_call"><mutation name="cleanupLevel" functionid="q:*F(:@d:]m)Z%u9]Kn%"/><next><block type="function_call"><mutation name="switchToLevel" functionid="@9D=y:*cAld.?z|,5Be7"><arg name="levelNum" id="7t777zstkde1vlic0m3mc" type="number"/></mutation><value name="7t777zstkde1vlic0m3mc"><shadow type="math_number"><field name="NUM">1</field></shadow><block type="math_arithmetic"><field name="OP">ADD</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><next><block type="function_call"><mutation name="initialiseLevel" functionid="z#|/uhOSrlC7E}W.nx)N"/></block></next></block></next></block></statement></block><block type="function_definition" x="720" y="36"><mutation name="restartCurrentLevel" functionid="dY2GO8dO$NP*Hd_,~/Fe"/><field name="function_name">restartCurrentLevel</field><statement name="STACK"><block type="function_call"><mutation name="cleanupLevel" functionid="q:*F(:@d:]m)Z%u9]Kn%"/><next><block type="function_call"><mutation name="initialiseLevel" functionid="z#|/uhOSrlC7E}W.nx)N"/></block></next></block></statement></block><block type="gameupdate" x="1590" y="6"><statement name="HANDLER"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="variables_get"><field name="VAR" id="UPL9BO|U.W!pWb!cTgn]">isGameRunning</field></block></value><statement name="DO0"><block type="function_call"><mutation name="whileGameIsRunning" functionid="/Sk/w%[wv_aVE-/)Bz)f"/></block></statement></block></statement></block><block type="function_definition" x="0" y="356"><mutation name="setupGame" functionid="q.]cP{R:jCT,~~w@}?k$"/><field name="function_name">setupGame</field><statement name="STACK"><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">13</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+f 8 8 8 8 8 8 8 8 8 8 8 8 8 8 f 
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+8 8 8 f f f f f f f f f f 8 8 8 
+8 8 f 8 8 8 8 8 8 8 8 8 8 f 8 8 
+8 8 f 8 8 a a a a a a 8 8 f 8 8 
+8 8 f 8 a 8 8 8 8 8 8 a 8 f 8 8 
+8 8 f 8 a 8 8 8 8 8 8 a 8 f 8 8 
+8 8 f 8 a 8 8 8 8 8 8 a 8 f 8 8 
+8 8 f 8 a 8 8 8 8 8 8 a 8 f 8 8 
+8 8 f 8 a 8 8 8 8 8 8 a 8 f 8 8 
+8 8 f 8 a 8 8 8 8 8 8 a 8 f 8 8 
+8 8 f 8 8 a a a a a a 8 8 f 8 8 
+8 8 f 8 8 8 8 8 8 8 8 8 8 f 8 8 
+8 8 8 f f f f f f f f f f 8 8 8 
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+f 8 8 8 8 8 8 8 8 8 8 8 8 8 8 f 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">true</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">1</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">false</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">2</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">false</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">3</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">false</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">4</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">false</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">8</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">true</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">9</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">true</field></shadow></value><next><block type="gamesettile"><value name="index"><shadow type="colorindexpicker"><field name="index">15</field></shadow></value><value name="img"><shadow type="tile_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="wall"><shadow type="toggleOnOff"><field name="on">false</field></shadow></value><next><block type="variables_set"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . 7 7 7 7 7 7 . . . . . 
+. . . . 7 7 7 7 7 7 . . . . 
+. . . . 7 7 7 7 7 7 . . . . 
+. . . . 5 5 5 5 5 5 . . . . 
+. . . . d f d d f d . . . . 
+. . . . d d d d d d . . . . 
+. . 7 7 7 7 7 7 7 7 7 7 . . 
+. . 7 7 7 7 7 7 7 7 7 7 . . 
+. . 7 7 7 7 7 7 7 7 7 7 . . 
+. . d d 7 7 7 7 7 7 8 8 8 . 
+. . 8 6 7 7 7 7 7 7 8 6 8 . 
+. 8 6 8 7 7 7 7 7 7 8 6 8 . 
+8 6 8 . 7 7 . . . 7 7 8 . . 
+6 8 . . 7 7 . . . 7 7 . . . 
+`</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="variables_set"><field name="VAR" id="P*,Kq*]$Ej@X[F+j3u+Z">isDying</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="logic_boolean"><field name="BOOL">FALSE</field></block></value><next><block type="camerafollow"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="function_definition" x="580" y="356"><mutation name="switchToLevel" functionid="@9D=y:*cAld.?z|,5Be7"><arg name="levelNum" id="7t777zstkde1vlic0m3mc" type="number"/></mutation><field name="function_name">switchToLevel</field><value name="7t777zstkde1vlic0m3mc"><shadow type="argument_reporter_number"><field name="VALUE">levelNum</field></shadow></value><statement name="STACK"><block type="variables_set"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="argument_reporter_number"><field name="VALUE">levelNum</field></block></value><next><block type="variables_set"><field name="VAR" id="#)D.f0.y_9:kREg)+]rE">coins</field><value name="VALUE"><block type="lists_create_with"><mutation items="0"/></block></value><next><block type="gameSplash"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="1" _input_init="true"></mutation><value name="title"><shadow type="text"><field name="TEXT">Level</field></shadow></value><value name="subtitle"><block type="variable_to_text"><value name="value"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value></block></value><next><block type="pxt_controls_for_of"><value name="VAR"><shadow type="variables_get_reporter"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></shadow></value><value name="LIST"><shadow type="variables_get"><field name="VAR" id="#)D.f0.y_9:kREg)+]rE">coins</field></shadow></value><statement name="DO"><block type="spritedestroy"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="sprite"><block type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></block></value></block></statement><next><block type="controls_if"><mutation elseif="2" else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><statement name="DO0"><block type="gamesettilemap"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="map"><shadow type="tilemap_image_picker"><field name="img">img`
+d d d d d d d d d d 
+d d . . . d . . 2 d 
+d . . d . . . d . d 
+d . d d d d . d . d 
+d . . . . . . d . d 
+d . d d d . d d . d 
+d 1 . . . . . . . d 
+d d d d d d d d d d 
+`</field></shadow></value></block></statement><value name="IF1"><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">2</field></shadow></value></block></value><statement name="DO1"><block type="gamesettilemap"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="map"><shadow type="tilemap_image_picker"><field name="img">img`
+d d d d d d d d d d d d d d d f 
+d . . . . . d d d . . . . . d f 
+d . d d d . . d . . d d d . d f 
+d . d d d d . . . d d d d . d f 
+d . d d d d d d d d d d d . d f 
+d . . . . . . d . . . . . . d f 
+d . d d d d . d . d d d d . d f 
+d . d d d d . d . d d d d . d f 
+d . . . . . . . . . . . . . d f 
+d d d d . d d d d d . d d d d f 
+d d d d . d d d d d . d d d d f 
+d . . . 2 . . . . . 4 . . . d f 
+d . d d d d d . d d d d d . d f 
+d . d d d d d . d d d d d . d f 
+d . d d d d d . d d d d d . d f 
+d . d . . . d . d . . . d . d f 
+d . d . d . d . d . d . d . d f 
+d . d . d . d . d . d . d . d f 
+d . . . d . . 3 . . d . . . d f 
+d . d d d d d d d d d d d . d f 
+d . d d d d d d d d d d d . d f 
+d . . . . . . . . . . . . . d f 
+d d . d d d d . d d d d . d d f 
+d d . . d d d . d d d . . d d f 
+d d d . d d d . d d d . d d d f 
+d d d . d d . 1 . d d . d d d f 
+d . . . . d . d . d . . . . d f 
+d . d d . d . d . d . d d . d f 
+d . d d . . . d . . . d d . d f 
+d . d d d . d d d . d d d . d f 
+d . . . . . . . . . . . . . d f 
+d d d d d d d d d d d d d d d f 
+`
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                </field></shadow><block type="tilemap_image_picker"><field name="img">img`
+d d d d d d d d d d d d d d d f 
+d . . . . . d d d . . . . . d f 
+d . d d d . . d . . d d d . d f 
+d . . . d d . . . d d . . . d f 
+d . d . d d d d d d d . d . d f 
+d . . . . . . d . . . . . . d f 
+d . d d d d . d . d d d d . d f 
+d . d d d d . d . d d d d . d f 
+d . f f f f f f f f f f f f d f 
+d d d d f d d d d d f d d d d f 
+d d d d f d d d d d f d d d d f 
+d . f f 2 f f f f f 4 f f . d f 
+d f d d d d d f d d d d d f d f 
+d . d d d d d f d d d d d . d f 
+d f d d d d d f d d d d d f d f 
+d . d f f f d f d f f f d . d f 
+d f d f d f d f d f d f d f d f 
+d . d f d f d f d f d f d . d f 
+d f f f d f f 3 f f d f f f d f 
+d . d d d d d d d d d d d . d f 
+d f d d d d d d d d d d d f d f 
+d . f f f f f f f f f f f . d f 
+d d . d d d d f d d d d . d d f 
+d d . . d d d f d d d . . d d f 
+d d d . d d d f d d d . d d d f 
+d d d . d d . 1 . d d . d d d f 
+d . . . . d . d . d . . . . d f 
+d . d d . d . d . d . d d . d f 
+d . d d . . . d . . . d d . d f 
+d . d d d . d d d . d d d . d f 
+d . . . . . . . . . . . . . d f 
+d d d d d d d d d d d d d d d f 
+`</field></block></value></block></statement><value name="IF2"><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block></value><statement name="DO2"><block type="gamesettilemap"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="map"><shadow type="tilemap_image_picker"><field name="img">img`
+d d d d d d d d d d d d d d d d 
+d . . . d . . . 3 . d . . . . d 
+d . d . d d . d d . . . . . . d 
+d . d . . . . . d d d d d . d d 
+d . d d . . d . . . . . d . . d 
+d . . . . d d d d d d . d d . d 
+d . d d . d . . . . d . . . . d 
+d . . d . d . d . d d . d d . d 
+d d . d . 4 . d . . 2 . . d . d 
+d . . d . d d d d d d d . d d d 
+d . d d . . . . . . . . . . . d 
+d . . d d d 3 d d d d d d . d d 
+d . . . . . . d d . . . . . . d 
+d . d d d . d d d d . d d d . d 
+d . . . . . . 1 1 . . . . . . d 
+d d d d d d d d d d d d d d d d 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`
+                    
+                    
+                    
+                    
+                    
+                    
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                </field></shadow><block type="tilemap_image_picker"><field name="img">img`
+d d d d d d d d d d d d d d d f 
+d . . . . . d d d . . . . . d f 
+d . d d d . . d . . d d d . d f 
+d . . . d d . . . d d . . . d f 
+d . d . d d d d d d d . d . d f 
+d . . . . . . d . . . . . . d f 
+d . d d d d . d . d d d d . d f 
+d . d d d d . d . d d d d . d f 
+d . f f f f f f f f f f f . d f 
+d d d . d d d d d d d . d d d f 
+d d d . d f f f f f d . d d d f 
+d d d . d f d d d f d . d d d f 
+d d f f f 2 f f f 4 f f f d d f 
+8 f f d d d d f d d d d f f 9 f 
+d d f d d d d f d d d d f d d f 
+d . f f f f d f d f f f f . d f 
+d f d f d f d f d f d f d f d f 
+d . d f d f d f d f d f d . d f 
+d f f f d f f 3 f f d f f f d f 
+d . d d d d d d d d d d d . d f 
+d f d d d d d d d d d d d f d f 
+d . f f f f f f f f f f f . d f 
+d d . d d d d f d d d d . d d f 
+d d . . d d d f d d d . . d d f 
+d d d . d d d f d d d . d d d f 
+d d d . d d . 1 . d d . d d d f 
+d . . . . d . d . d . . . . d f 
+d . d d . d . d . d . d d . d f 
+d . d d . . . d . . . d d . d f 
+d . d d d . d d d . d d d . d f 
+d . . . . . . . . . . . . . d f 
+d d d d d d d d d d d d d d d f 
+`</field></block></value></block></statement><statement name="ELSE"><block type="gameOver"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="win"><shadow type="toggleWinLose"><field name="win">true</field></shadow></value></block></statement><next><block type="variables_set"><field name="VAR" id="bA49SV#o_tN:)+FR?ubZ">list</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="gamegettilestype"><value name="index"><shadow type="colorindexpicker"><field name="index">0</field></shadow></value></block></value><next><block type="variables_set"><field name="VAR" id="_nC*M_[^_vLTk4~%Z;)-">foodCount</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="lists_length"><value name="VALUE"><block type="variables_get"><field name="VAR" id="bA49SV#o_tN:)+FR?ubZ">list</field></block></value></block></value><next><block type="pxt_controls_for_of"><value name="VAR"><shadow type="variables_get_reporter"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></shadow></value><value name="LIST"><block type="variables_get"><field name="VAR" id="bA49SV#o_tN:)+FR?ubZ">list</field></block></value><statement name="DO"><block type="variables_set"><field name="VAR" id="Z,SEOe8Wz!TV^YT0Pwtg">coin</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . 
+. . . . . . . . 
+. . . . . . . . 
+. . . 1 1 . . . 
+. . . 1 1 . . . 
+. . . . . . . . 
+. . . . . . . . 
+. . . . . . . . 
+`</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Food</field></shadow></value></block></value><next><block type="spritesetpos"><value name="sprite"><block type="variables_get"><field name="VAR" id="Z,SEOe8Wz!TV^YT0Pwtg">coin</field></block></value><value name="x"><shadow type="positionPicker"><field name="index">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.x</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></block></value></block></value><value name="y"><shadow type="positionPicker"><field name="index">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.y</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></block></value></block></value><next><block type="array_push"><value name="list"><block type="variables_get"><field name="VAR" id="#)D.f0.y_9:kREg)+]rE">coins</field></block></value><value name="value"><block type="variables_get"><field name="VAR" id="Z,SEOe8Wz!TV^YT0Pwtg">coin</field></block></value></block></next></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="function_definition" x="1300" y="356"><mutation name="initialiseLevel" functionid="z#|/uhOSrlC7E}W.nx)N"/><field name="function_name">initialiseLevel</field><statement name="STACK"><block type="variables_set"><field name="VAR" id="Bodf,hC;%TCc:`s!3~+u">ghosts</field><value name="VALUE"><block type="lists_create_with"><mutation items="0"/></block></value><next><block type="gameplaceonrandomtile"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></shadow></value><value name="color"><shadow type="colorindexpicker"><field name="index">1</field></shadow></value><next><block type="variables_set"><field name="VAR" id="P*,Kq*]$Ej@X[F+j3u+Z">isDying</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="logic_boolean"><field name="BOOL">FALSE</field></block></value><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">GTE</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 f 7 f 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 7 . . . . 
+. . . . . 7 7 . . . . 7 7 . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value></block></value><next><block type="spritesetvel"><value name="sprite"><block type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></block></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">40</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value><next><block type="gameplaceonrandomtile"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></shadow></value><value name="color"><shadow type="colorindexpicker"><field name="index">2</field></shadow></value><next><block type="array_push"><value name="list"><block type="variables_get"><field name="VAR" id="Bodf,hC;%TCc:`s!3~+u">ghosts</field></block></value><value name="value"><block type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></block></value></block></next></block></next></block></next></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">GTE</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">2</field></shadow></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . 4 4 4 4 4 4 . . . . . 
+. . . 4 4 4 4 4 4 4 4 4 4 . . . 
+. . 4 4 4 4 4 4 4 4 4 4 4 4 . . 
+. . f f f f f f f f f f f f . . 
+. 4 4 f f f 4 4 4 4 f f f 4 4 . 
+. 4 4 f f f 4 4 4 4 f f f 4 4 . 
+. 4 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+. 4 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+. 4 4 4 1 f 1 f 1 f 1 f 4 4 4 . 
+. 4 4 4 f f f f f f f f 4 4 4 . 
+. 4 4 4 f 1 f 1 f 1 f 1 4 4 4 . 
+. 4 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+. 4 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+. 4 . 4 4 4 . . 4 . 4 4 . . 4 . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow><block type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 f 7 f 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 7 . . . . 
+. . . . . 7 7 . . . . 7 7 . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></block></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value></block></value><next><block type="spritesetvel"><value name="sprite"><block type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></block></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">-40</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value><next><block type="gameplaceonrandomtile"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></shadow></value><value name="color"><shadow type="colorindexpicker"><field name="index">4</field></shadow></value><next><block type="array_push"><value name="list"><block type="variables_get"><field name="VAR" id="Bodf,hC;%TCc:`s!3~+u">ghosts</field></block></value><value name="value"><block type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></block></value></block></next></block></next></block></next></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">GTE</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="denlAHqte;w[08}i6P1@">currentLevel</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . 3 3 3 3 3 3 . . . . . 
+. . . 3 3 3 3 3 3 3 3 3 3 . . . 
+. . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
+. . f f f f f f f f f f f f . . 
+. 3 3 f f f 3 3 3 3 f f f 3 3 . 
+. 3 3 f f f 3 3 3 3 f f f 3 3 . 
+. 3 3 3 3 3 3 3 3 3 3 3 3 3 3 . 
+. 3 3 3 3 3 3 3 3 3 3 3 3 3 3 . 
+. 3 3 3 1 f 1 f 1 f 1 f 3 3 3 . 
+. 3 3 3 f f f f f f f f 3 3 3 . 
+. 3 3 3 f 1 f 1 f 1 f 1 3 3 3 . 
+. 3 3 3 3 3 3 3 3 3 3 3 3 3 3 . 
+. 3 3 3 3 3 3 3 3 3 3 3 3 3 3 . 
+. 3 . 3 3 3 . . 3 . 3 3 . . 3 . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow><block type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 f 7 f 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 7 7 . . . . 
+. . . . . 7 7 . . . . 7 7 . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></block></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value></block></value><next><block type="spritesetvel"><value name="sprite"><block type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></block></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow><block type="device_random"><value name="min"><shadow type="math_number"><field name="NUM">-40</field></shadow></value><value name="limit"><shadow type="math_number"><field name="NUM">40</field></shadow></value></block></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value><next><block type="gameplaceonrandomtile"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></shadow></value><value name="color"><shadow type="colorindexpicker"><field name="index">3</field></shadow></value><next><block type="array_push"><value name="list"><block type="variables_get"><field name="VAR" id="Bodf,hC;%TCc:`s!3~+u">ghosts</field></block></value><value name="value"><block type="variables_get"><field name="VAR" id="}1!rYh5~Lj}@@-6*/{+f">ghost</field></block></value></block></next></block></next></block></next></block></statement><next><block type="game_control_sprite"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="2" _input_init="true"></mutation><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></shadow></value><value name="vx"><shadow type="math_number"><field name="NUM">60</field></shadow></value><value name="vy"><shadow type="math_number"><field name="NUM">60</field></shadow></value><next><block type="variables_set"><field name="VAR" id="UPL9BO|U.W!pWb!cTgn]">isGameRunning</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="logic_boolean"><field name="BOOL">TRUE</field></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="function_definition" x="1880" y="356"><mutation name="cleanupLevel" functionid="q:*F(:@d:]m)Z%u9]Kn%"/><field name="function_name">cleanupLevel</field><statement name="STACK"><block type="variables_set"><field name="VAR" id="UPL9BO|U.W!pWb!cTgn]">isGameRunning</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="logic_boolean"><field name="BOOL">FALSE</field></block></value><next><block type="pxt_controls_for_of"><value name="VAR"><shadow type="variables_get_reporter"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></shadow></value><value name="LIST"><shadow type="variables_get"><field name="VAR" id="Bodf,hC;%TCc:`s!3~+u">ghosts</field></shadow></value><statement name="DO"><block type="spritedestroy"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="sprite"><block type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></block></value></block></statement></block></next></block></statement></block><block type="function_definition" x="2300" y="336"><mutation name="whileGameIsRunning" functionid="/Sk/w%[wv_aVE-/)Bz)f"/><field name="function_name">whileGameIsRunning</field><statement name="STACK"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="_nC*M_[^_vLTk4~%Z;)-">foodCount</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></value><statement name="DO0"><block type="function_call"><mutation name="levelComplete" functionid="Nxj?^wc(Jv*:-I=Gz3@4"/></block></statement><next><block type="pxt_controls_for_of"><value name="VAR"><shadow type="variables_get_reporter"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></shadow></value><value name="LIST"><shadow type="variables_get"><field name="VAR" id="Bodf,hC;%TCc:`s!3~+u">ghosts</field></shadow></value><statement name="DO"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.vx</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></block></value></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></value><value name="B"><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.vy</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></block></value></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></value></block></value><statement name="DO0"><block type="gameplaceonrandomtile"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></shadow></value><value name="color"><shadow type="colorindexpicker"><field name="index">2</field></shadow></value></block></statement><next><block type="Testing_mazeMove"><value name="s"><block type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=">value</field></block></value><value name="t"><block type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></block></value><value name="v"><shadow type="math_number"><field name="NUM">40</field></shadow></value></block></next></block></statement></block></next></block></statement></block><block type="spritesoverlap" x="2990" y="746"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Player</field></shadow></value><value name="HANDLER_DRAG_PARAM_otherSprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></shadow></value><value name="otherKind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value><statement name="HANDLER"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_negate"><value name="BOOL"><block type="variables_get"><field name="VAR" id="P*,Kq*]$Ej@X[F+j3u+Z">isDying</field></block></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="P*,Kq*]$Ej@X[F+j3u+Z">isDying</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="logic_boolean"><field name="BOOL">TRUE</field></block></value><next><block type="game_control_sprite"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="2" _input_init="true"></mutation><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="vx"><shadow type="math_number"><field name="NUM">0</field></shadow></value><value name="vy"><shadow type="math_number"><field name="NUM">0</field></shadow></value><next><block type="startEffectOnSprite"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><field name="effect">effects.fire</field><value name="sprite"><block type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></block></value><next><block type="mixer_play_sound_until_done"><field name="sound">music.wawawawaa</field><next><block type="particlesclearparticles"><value name="anchor"><block type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></block></value><next><block type="function_call"><mutation name="restartCurrentLevel" functionid="dY2GO8dO$NP*Hd_,~/Fe"/><next><block type="game_control_sprite"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="2" _input_init="true"></mutation><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></shadow></value><value name="vx"><shadow type="math_number"><field name="NUM">60</field></shadow></value><value name="vy"><shadow type="math_number"><field name="NUM">60</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></statement></block><block type="spritesollisions" x="2300" y="856"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value><value name="tile"><shadow type="colorindexpicker"><field name="index">8</field></shadow></value><statement name="HANDLER"><block type="spritesetpos"><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="x"><shadow type="positionPicker"><field name="index">216</field></shadow></value><value name="y"><shadow type="positionPicker"><field name="index">216</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.y</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></block></value></block></value></block></statement></block><block type="spritesollisions" x="2300" y="1016"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Player</field></shadow></value><value name="tile"><shadow type="colorindexpicker"><field name="index">8</field></shadow></value><statement name="HANDLER"><block type="spritesetpos"><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="x"><shadow type="positionPicker"><field name="index">216</field></shadow></value><value name="y"><shadow type="positionPicker"><field name="index">216</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.y</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></block></value></block></value></block></statement></block><block type="spritesollisions" x="2300" y="1176"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value><value name="tile"><shadow type="colorindexpicker"><field name="index">9</field></shadow></value><statement name="HANDLER"><block type="spritesetpos"><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="x"><shadow type="positionPicker"><field name="index">24</field></shadow></value><value name="y"><shadow type="positionPicker"><field name="index">216</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.y</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></block></value></block></value></block></statement></block><block type="spritesoverlap" x="2990" y="1286"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value><value name="HANDLER_DRAG_PARAM_otherSprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></shadow></value><value name="otherKind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value><statement name="HANDLER"><block type="gameplaceonrandomtile"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="qt6!SNU,bWDtOcUNBq+=" variabletype="">value</field></shadow><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="color"><shadow type="colorindexpicker"><field name="index">2</field></shadow></value></block></statement></block><block type="spritesollisions" x="2300" y="1336"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Player</field></shadow></value><value name="tile"><shadow type="colorindexpicker"><field name="index">9</field></shadow></value><statement name="HANDLER"><block type="spritesetpos"><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></block></value><value name="x"><shadow type="positionPicker"><field name="index">24</field></shadow></value><value name="y"><shadow type="positionPicker"><field name="index">216</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.y</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></block></value></block></value></block></statement></block><block type="spritesoverlap" x="2990" y="1446"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Player</field></shadow></value><value name="HANDLER_DRAG_PARAM_otherSprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></shadow></value><value name="otherKind"><shadow type="spritekind"><field name="MEMBER">Food</field></shadow></value><statement name="HANDLER"><block type="variables_change"><field name="VAR" id="_nC*M_[^_vLTk4~%Z;)-">foodCount</field><value name="VALUE"><shadow type="math_number"><field name="NUM">-1</field></shadow></value><next><block type="hudChangeScoreBy"><value name="value"><shadow type="math_number"><field name="NUM">1</field></shadow></value><next><block type="spritedestroy"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><field name="effect">effects.fire</field><value name="sprite"><block type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">otherSprite</field></block></value><value name="duration"><shadow type="timePicker"><field name="ms">500</field></shadow></value><next><block type="mixer_play_note"><value name="note"><shadow type="device_note"><field name="note">523</field></shadow></value><value name="duration"><shadow type="device_beat"><field name="fraction">BeatFraction.Quarter</field></shadow></value></block></next></block></next></block></next></block></statement></block><block type="spritesollisions" x="2300" y="1516"><value name="HANDLER_DRAG_PARAM_sprite"><shadow type="argument_reporter_custom"><mutation typename="Sprite"/><field name="VALUE">sprite</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Enemy</field></shadow></value><value name="tile"><shadow type="colorindexpicker"><field name="index">0</field></shadow></value><statement name="HANDLER"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="variables_get"><field name="VAR" id="UPL9BO|U.W!pWb!cTgn]">isGameRunning</field></block></value><statement name="DO0"><block type="gameplaceonrandomtile"><value name="sprite"><shadow type="variables_get"><field name="VAR" id="}U)j7:7x/g!a/pN=qOCF">mySprite</field></shadow></value><value name="color"><shadow type="colorindexpicker"><field name="index">2</field></shadow></value></block></statement></block></statement></block><block type="keyonevent" x="2300" y="1756"><field name="button">controller.B</field><field name="event">ControllerButtonEvent.Pressed</field><statement name="HANDLER"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">FALSE</field></shadow></value><statement name="DO0"><block type="function_call"><mutation name="levelComplete" functionid="Nxj?^wc(Jv*:-I=Gz3@4"/></block></statement></block></statement></block></xml>
